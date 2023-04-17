@@ -10,7 +10,15 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ApplicationAppBar(title: "Settings"),
+        appBar: ApplicationAppBar(
+          title: "Settings",
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
         body: Text("Hello world"));
   }
 }

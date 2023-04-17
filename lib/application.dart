@@ -15,13 +15,13 @@ class Application extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) {
-          return const HomeScreen();
+          return HomeScreen();
         },
         "/products": (context) {
-          return const ProductsScreen();
+          return ProductsScreen();
         },
         "/product-details": (context) {
-          return const ProductDetailsScreen();
+          return ProductDetailsScreen();
         },
         "/profile": (context) {
           return const ProfileScreen();

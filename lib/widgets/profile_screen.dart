@@ -10,7 +10,15 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: ApplicationAppBar(title: "Profile"),
+        appBar: ApplicationAppBar(
+          title: "Profile",
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
         body: Text("Hello world"));
   }
 }

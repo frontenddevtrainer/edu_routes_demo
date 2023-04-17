@@ -11,14 +11,27 @@ import 'application_appbar.dart';
 // products/id
 
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+  ProductsScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const ApplicationAppBar(title: "Products"),
+        key: _scaffoldKey,
+        appBar: ApplicationAppBar(
+          title: "Products",
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              _scaffoldKey.currentState?.openDrawer();
+            },
+          ),
+        ),
         drawer: const ApplicationDrawer(),
         body: ListView(
           children: [
