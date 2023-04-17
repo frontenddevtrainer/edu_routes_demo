@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'application_appbar.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class PostDetailsScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  ProductDetailsScreen({
+  PostDetailsScreen({
     super.key,
   });
 
@@ -17,7 +17,7 @@ class ProductDetailsScreen extends StatelessWidget {
     return Scaffold(
         key: _scaffoldKey,
         appBar: ApplicationAppBar(
-          title: "Product",
+          title: "Post",
           leading: IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {

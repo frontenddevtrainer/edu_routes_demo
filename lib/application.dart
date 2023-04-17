@@ -1,6 +1,6 @@
 import 'package:edu_routes_demo/widgets/checkout_screen.dart';
-import 'package:edu_routes_demo/widgets/product_details_screen.dart';
-import 'package:edu_routes_demo/widgets/products_screen.dart';
+import 'package:edu_routes_demo/widgets/post_details_screen.dart';
+import 'package:edu_routes_demo/widgets/posts_screen.dart';
 import 'package:edu_routes_demo/widgets/profile_screen.dart';
 import 'package:edu_routes_demo/widgets/settings_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +17,11 @@ class Application extends StatelessWidget {
         "/": (context) {
           return HomeScreen();
         },
-        "/products": (context) {
-          return ProductsScreen();
+        "/posts": (context) {
+          return PostsScreen();
         },
-        "/product-details": (context) {
-          return ProductDetailsScreen();
+        "/post-details": (context) {
+          return PostDetailsScreen();
         },
         "/profile": (context) {
           return const ProfileScreen();
