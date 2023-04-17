@@ -12,6 +12,12 @@ class ApplicationDrawer extends StatelessWidget {
       children: [
         ListTile(
           onTap: () {
+            Navigator.pushNamed(context, "/products");
+          },
+          title: const Text("Products"),
+        ),
+        ListTile(
+          onTap: () {
             Navigator.pushNamed(context, "/profile");
           },
           title: const Text("Profile"),
