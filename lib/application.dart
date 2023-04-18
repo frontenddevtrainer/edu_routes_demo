@@ -28,7 +28,7 @@ class Application extends StatelessWidget {
           return const ProfileScreen();
         },
         "/settings": (context) {
-          return const SettingsScreen();
+          return SettingsScreen();
         },
         "/checkout": (context) {
           return const CheckoutScreen();
