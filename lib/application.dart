@@ -1,4 +1,5 @@
 import 'package:edu_routes_demo/widgets/checkout_screen.dart';
+import 'package:edu_routes_demo/widgets/help_screen.dart';
 import 'package:edu_routes_demo/widgets/post_details_screen.dart';
 import 'package:edu_routes_demo/widgets/posts_screen.dart';
 import 'package:edu_routes_demo/widgets/profile_screen.dart';
@@ -31,6 +32,9 @@ class Application extends StatelessWidget {
         },
         "/checkout": (context) {
           return const CheckoutScreen();
+        },
+        "/help": (context) {
+          return const HelpScreen();
         }
       },
     );

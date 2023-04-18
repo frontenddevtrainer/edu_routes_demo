@@ -34,6 +34,12 @@ class ApplicationDrawer extends StatelessWidget {
           },
           title: const Text("Settings"),
         ),
+        ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, "/help");
+          },
+          title: const Text("Help"),
+        ),
       ],
     ));
   }
