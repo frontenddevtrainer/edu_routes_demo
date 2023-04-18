@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'application_appbar.dart';
 import "package:webview_flutter/webview_flutter.dart";
+import "package:url_launcher/url_launcher.dart";
 
 class HelpScreen extends StatefulWidget {
   const HelpScreen({super.key});
@@ -16,9 +17,24 @@ class _HelpScreenState extends State<HelpScreen> {
   void initState() {
     super.initState();
     _controller = WebViewController()
-      ..loadRequest(Uri.parse("https://fir-project-dac36.firebaseapp.com"));
-      // ..loadHtmlString("<h1>hello world this is a HTML string<h1>");
+      // ..loadRequest(Uri.parse("https://fir-project-dac36.firebaseapp.com"))
+      // ..setNavigationDelegate(NavigationDelegate(
+      //   onNavigationRequest: (request) => ,
+      // ))
+      ..loadHtmlString("<a href='tel:8942343243'>hello world this is a HTML string<a>")
       // ..loadFlutterAsset(key)
+      ..setNavigationDelegate(NavigationDelegate(
+        onNavigationRequest: (request) async {
+          final url = Uri.parse(request.url);
+
+          if(url.scheme == "tel" && await canLaunchUrl(url)) {
+              await launchUrl(url);
+          }
+    
+          return NavigationDecision.prevent;
+        },
+      ));
+
   }
 
   @override
