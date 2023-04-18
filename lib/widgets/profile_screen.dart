@@ -13,6 +13,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   late LocationData _currentLocation;
+  late GoogleMapController _mapController;
 
   @override
   void initState() {
@@ -28,7 +29,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         _currentLocation = currLocation;
       });
+      _updateMapLocation();
     } catch (e) {}
+  }
+
+  void _updateMapLocation() {
+
+    if(_mapController != null && _currentLocation != null) {
+      final cameraPosition = CameraPosition(zoom: 14, target: LatLng(_currentLocation.latitude as double, _currentLocation.longitude as double));
+      _mapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+    }
+
   }
 
   @override
@@ -43,6 +54,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ),
-        body: Text("Hello world"));
+        body: GoogleMap(
+            onMapCreated: (controller) {
+              _mapController = controller;
+            },
+            initialCameraPosition:
+                CameraPosition(zoom: 10, target: LatLng(28.64, 77.2))));
   }
 }
