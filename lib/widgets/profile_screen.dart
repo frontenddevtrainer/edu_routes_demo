@@ -14,6 +14,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   late LocationData _currentLocation;
   late GoogleMapController _mapController;
+  final List<Marker> _markers = <Marker>[];
 
   @override
   void initState() {
@@ -34,12 +35,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _updateMapLocation() {
+    final LatLng position = LatLng(_currentLocation.latitude as double,
+        _currentLocation.longitude as double);
+    final Marker marker = Marker(
+        markerId: const MarkerId("1"),
+        position: position,
+        infoWindow: const InfoWindow(
+            title: "This is the current location of the user."));
 
-    if(_mapController != null && _currentLocation != null) {
-      final cameraPosition = CameraPosition(zoom: 14, target: LatLng(_currentLocation.latitude as double, _currentLocation.longitude as double));
-      _mapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+    if (_mapController != null && _currentLocation != null) {
+      final cameraPosition = CameraPosition(zoom: 14, target: position);
+      _mapController
+          .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+      _markers.add(marker);
+      setState(() {});
     }
-
   }
 
   @override
@@ -55,6 +65,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         body: GoogleMap(
+            mapType: MapType.satellite,
+            markers: Set<Marker>.of(_markers),
             onMapCreated: (controller) {
               _mapController = controller;
             },
